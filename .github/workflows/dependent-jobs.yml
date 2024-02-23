@@ -16,14 +16,6 @@ jobs:
 
   notify:
     needs: deploy
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, "${{ inputs.chosen-os }}"]
     steps:
-            - name: echo a string
-              run: echo "Hello World"
-
-            - name: Get environment versions
-              run: |
-                echo "Checking environment versions"
-                echo "Node Version: $(node --version)"
-                echo "NPM Version: $(npm --version)"
-                echo "NuGet Version: $(nuget help | grep Version)"
+    - run: echo Hello world!
