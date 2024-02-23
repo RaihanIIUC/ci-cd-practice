@@ -11,6 +11,7 @@ jobs:
             echo "Commit SHA: $GITHUB_SHA"
             echo "Git Ref: $GITHUB_REF"
     show-info-windows:
+        needs: show-info-ubuntu
         runs-on: windows-latest
         steps:
         - name: Display Environment Info
