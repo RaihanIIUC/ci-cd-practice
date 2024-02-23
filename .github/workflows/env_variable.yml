@@ -1,0 +1,24 @@
+name: Environment Variables on Push
+on: push
+
+
+jobs:
+    show-info-ubuntu:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Display Environment Info
+          run: |
+            echo "Runner Machine Name : $(hostname)"
+            echo "Operating System: $(uname)"
+            echo "Commit SHA: $GITHUB_SHA"
+            echo "Git Ref: $GITHUB_REF"
+    show-info-windows:
+        needs: show-info-ubuntu
+        runs-on: windows-latest
+        steps:
+        - name: Display Environment Info
+          run: |
+            echo "Runner Machine Name : $(hostname)"
+            echo "Operating System: $(uname)"
+            echo "Commit SHA: $GITHUB_SHA"
+            echo "Git Ref: $GITHUB_REF"
