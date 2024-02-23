@@ -23,9 +23,8 @@ jobs:
               run: |
                 echo "Checking environment versions"
                 echo "Node Version: $(node --version)"
-  windows-dependent-job:
-    needs: run-in-windows
-      runs-on: windows-latest
-        steps:
-          - name: echo a string
-            run: Write-Output "Windows String"
+    macos-parallel-job:
+      runs-on: macos-latest
+          steps:
+          - name: View SW Version
+            run: sw_vers
