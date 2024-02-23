@@ -1,5 +1,6 @@
 name: Dependent Jobs Test
 on: [push]
+
 jobs:
   run-in-ubuntu:
     runs-on: ubuntu-latest
