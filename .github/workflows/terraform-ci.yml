@@ -26,7 +26,7 @@ jobs:
                 sudo apt-get install make
                 make --version
 
-        make-version:
+    make-version:
         needs: install-make
         runs-on: ubuntu-latest
         steps:
