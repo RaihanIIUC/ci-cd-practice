@@ -5,14 +5,26 @@ jobs:
     name: build and test on ubuntu
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET Core
-      uses: actions/setup=dotnet@v3
+            - name: echo a string
+              run: echo "Hello World"
+
+            - name: Get environment versions
+              run: |
+                echo "Checking environment versions"
+                echo "Node Version: $(node --version)"
+                echo "NPM Version: $(npm --version)"
+                echo "NuGet Version: $(nuget help | grep Version)"
 
   build-windows:
       name: build and test on windows
       runs-on: windows-latest
       steps:
-      - uses: actions/checkout@v3
-      - name: Setup .NET Core
-        uses: actions/setup=dotnet@v3
+            - name: echo a string
+              run: echo "Hello World"
+
+            - name: Get environment versions
+              run: |
+                echo "Checking environment versions"
+                echo "Node Version: $(node --version)"
+                echo "NPM Version: $(npm --version)"
+                echo "NuGet Version: $(nuget help | grep Version)"
