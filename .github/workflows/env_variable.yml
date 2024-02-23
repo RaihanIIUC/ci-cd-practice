@@ -1,5 +1,7 @@
 name: Environment Variables on Push
 on: push
+
+
 jobs:
     show-info-ubuntu:
         runs-on: ubuntu-latest
