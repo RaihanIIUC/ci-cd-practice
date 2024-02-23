@@ -25,4 +25,12 @@ jobs:
               run: |
                 sudo apt-get install make
                 make --version
-                echo "Make Version: $(make --version)  , flag = ${{ github.actor }} "
+
+        make-version:
+        needs: install-make
+        runs-on: ubuntu-latest
+        steps:
+            - shell: bash
+              run: |
+                make --version
+                echo "Make Version: $(make --version | head -n1) ,flag =  ${{ github.actor }}"
