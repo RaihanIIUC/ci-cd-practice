@@ -18,4 +18,4 @@ jobs:
                 sudo apt-get update
                 sudo apt-get install make
                 make --version
-                echo "Make Version: $(make --version)"
+                echo "Make Version: $(make --version)  , flag = ${{ github.actor }} "
