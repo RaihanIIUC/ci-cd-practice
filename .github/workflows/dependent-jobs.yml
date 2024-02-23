@@ -1,7 +1,7 @@
 name: Dependent Jobs Test
 on: [push]
 jobs:
-  deploy:
+  run-in-ubuntu:
     runs-on: ubuntu-latest
     steps:
             - name: echo a string
@@ -11,18 +11,21 @@ jobs:
               run: |
                 echo "Checking environment versions"
                 echo "Node Version: $(node --version)"
-                echo "NPM Version: $(npm --version)"
-                echo "NuGet Version: $(nuget help | grep Version)"
 
-  notify:
+  run-in-windows:
     needs: deploy
-    runs-on:
-      group: ubuntu-runners
-      labels: ubuntu-20.04-16core
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+      runs-on: windows-latest
+          steps:
+            - name: echo a string
+              run: echo "Hello World"
+
+            - name: Get environment versions
+              run: |
+                echo "Checking environment versions"
+                echo "Node Version: $(node --version)"
+  windows-dependent-job:
+    needs: run-in-windows
+      runs-on: windows-latest
+        steps:
+          - name: echo a string
+            run: Write-Output "Windows String"
