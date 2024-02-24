@@ -41,7 +41,7 @@ jobs:
         needs: install-make
         runs-on: ubuntu-latest
         steps:
-           - uses: actions/checkout@v4            
+            - uses: actions/checkout@v4            
             - shell: bash
               run: |
                  make docker_build IMG=testing-img-pr
