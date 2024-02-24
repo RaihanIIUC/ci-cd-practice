@@ -1,5 +1,5 @@
-name: Terraform ci test 
-run-name: ${{ github.actor }} is Testing Terraform github actions
+name: Makefile docker Run 
+run-name: ${{ github.actor }} is Testing docker with makefile actions
 
 on: 
   push:
