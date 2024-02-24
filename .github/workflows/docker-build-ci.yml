@@ -1,4 +1,4 @@
-name: Terraform ci test 
+name: make file ci test 
 run-name: ${{ github.actor }} testing make file for docker build
 
 on: 
@@ -23,7 +23,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - shell: bash
-            - uses: actions/checkout@v4
               run: |
                 sudo apt-get install make
                 make --version
@@ -33,7 +32,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - shell: bash
-            - uses: actions/checkout@v4            
               run: |
                 make --version
                 echo "Make Version: $(make --version | head -n1) ,flag =  ${{ github.actor }}"
@@ -42,10 +40,7 @@ jobs:
     make-docker-cmd:
         needs: install-make
         runs-on: ubuntu-latest
-        
         steps:
             - shell: bash
-            - uses: actions/checkout@v4
-
               run: |
                  make docker_build IMG=testing-img-pr
