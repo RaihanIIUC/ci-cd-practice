@@ -1,5 +1,5 @@
-name: Makefile docker Run 
-run-name: ${{ github.actor }} is Testing docker with makefile actions
+name: learn-docker-ci
+run-name: ${{ github.actor }}  testing docker make shell run
 
 on: 
   push:
@@ -10,36 +10,17 @@ on:
       - main
 
 jobs:
-    os-update:
+    install-make:
         runs-on: ubuntu-latest
         steps:
+            - uses: actions/checkout@v4
             - shell: bash
               run: |
                 sudo apt-get update
-      
-    install-make:
-        needs: os-update
-        runs-on: ubuntu-latest
-        steps:
-            - shell: bash
-              run: |
                 sudo apt-get install make
-                make --version
-
-    make-version:
-        needs: install-make
-        runs-on: ubuntu-latest
-        steps:
             - shell: bash
               run: |
-                make --version
-                echo "Make Version: $(make --version | head -n1) ,flag =  ${{ github.actor }}"
-
-
-    make-docker-cmd:
-        needs: install-make
-        runs-on: ubuntu-latest
-        steps:
-            - shell: bash
-              run: |
-                 make docker_build IMG=testing-img-param
+                make docker_build IMG=learn-docker-ci
+            # - shell: bash
+            #   run: |
+            #     make docker_login 
